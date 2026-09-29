@@ -33,6 +33,8 @@ app.use('/auth/login', rateLimit({
 app.use(express.json());
 app.use(morgan('dev'));          // method, status, time
 
+app.use(express.static('public'));       // the web page at /
+
 app.use('/auth', authRoutes);
 app.use('/todos', todosRoutes);
 

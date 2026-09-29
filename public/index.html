@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Todos</title>
+<style>
+  :root{
+    --bg:#0d1412; --card:#16211d; --line:#27352f;
+    --fg:#f1f3ee; --dim:#8d9b93; --green:#7fd06a; --red:#e2725b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg); min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    display:flex; justify-content:center; padding:24px 16px 60px;
+  }
+  .wrap{width:100%; max-width:480px}
+  h1{font-size:30px; margin:0; letter-spacing:-.02em}
+  .sub{color:var(--dim); font-size:15px; margin:6px 0 24px}
+  .hidden{display:none !important}
+
+  .tabs{display:flex; background:var(--card); border-radius:12px; padding:4px; margin-bottom:16px}
+  .tabs button{
+    flex:1; padding:10px; border:0; border-radius:9px; background:transparent;
+    color:var(--dim); font-size:15px; font-weight:600; cursor:pointer;
+  }
+  .tabs button.on{background:#25352e; color:var(--green)}
+
+  input{
+    width:100%; background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; color:var(--fg); font-size:16px; margin-bottom:12px; outline:none;
+  }
+  input:focus{border-color:var(--green)}
+  button.primary{
+    width:100%; background:var(--green); color:#08120c; border:0; border-radius:12px;
+    padding:15px; font-size:17px; font-weight:700; cursor:pointer;
+  }
+  button.primary:disabled{opacity:.6; cursor:default}
+
+  .msg{margin-top:14px; font-size:14px; color:var(--red); min-height:20px}
+  .msg.ok{color:var(--green)}
+
+  .head{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px}
+  .link{background:none; border:0; color:var(--green); font-size:15px; cursor:pointer}
+
+  .addrow{display:flex; gap:10px}
+  .addrow input{margin-bottom:0}
+  .addrow button{
+    background:var(--green); color:#08120c; border:0; border-radius:12px;
+    width:52px; font-size:22px; font-weight:700; cursor:pointer; flex:none;
+  }
+
+  ul{list-style:none; padding:0; margin:20px 0 0}
+  li{display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid #1d2a25}
+  .check{cursor:pointer; font-size:18px; user-select:none}
+  .title{flex:1; font-size:17px; cursor:pointer}
+  .title.done{color:#5d6b63; text-decoration:line-through}
+  .icon{background:none; border:0; font-size:17px; cursor:pointer; opacity:.85}
+  .icon:hover{opacity:1}
+  .edit{flex:1; margin:0; padding:9px 12px; font-size:16px}
+  .empty{color:var(--dim); text-align:center; margin-top:36px}
+  .hint{color:#5d6b63; font-size:12px; text-align:center; margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGIN / SIGNUP -->
+  <section id="authView">
+    <h1>My Todos</h1>
+    <p class="sub">on my own backend</p>
+
+    <div class="tabs">
+      <button id="tabLogin" class="on">Log in</button>
+      <button id="tabSignup">Sign up</button>
+    </div>
+
+    <input id="name" class="hidden" placeholder="Name" autocomplete="name">
+    <input id="email" type="email" placeholder="Email" autocomplete="email">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+
+    <button id="submitBtn" class="primary">Log in</button>
+    <p id="authMsg" class="msg"></p>
+  </section>
+
+  <!-- TODOS -->
+  <section id="todoView" class="hidden">
+    <div class="head">
+      <h1>My Todos</h1>
+      <button id="logoutBtn" class="link">Log out</button>
+    </div>
+
+    <div class="addrow">
+      <input id="newTodo" placeholder="What needs doing?">
+      <button id="addBtn">+</button>
+    </div>
+
+    <ul id="list"></ul>
+    <p id="todoMsg" class="msg"></p>
+    <p class="hint">Click the box to tick · ✏️ edit · 🗑️ delete</p>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
