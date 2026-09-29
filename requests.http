@@ -1,0 +1,22 @@
+### No token → 401
+GET http://localhost:3000/todos
+
+### With token → works (but shows EVERYONE's todos for now 😬)
+GET http://localhost:3000/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYmI5YjFjMjgyOTBhNjJjYTA1ZTk2MSIsImlhdCI6MTc5MDY4MzExNCwiZXhwIjoxNzkxMjg3OTE0fQ.wxuWWxmpvaJIh8lH-BHMqUKwud-xtoQMhb3R2KXsOIc
+
+### My todos (with token) → probably [] now, the old ones belong to seed users
+GET http://localhost:3000/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYmI5YjFjMjgyOTBhNjJjYTA1ZTk2MSIsImlhdCI6MTc5MDY4MzExNCwiZXhwIjoxNzkxMjg3OTE0fQ.wxuWWxmpvaJIh8lH-BHMqUKwud-xtoQMhb3R2KXsOIc
+
+### Create one
+POST http://localhost:3000/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYmI5YjFjMjgyOTBhNjJjYTA1ZTk2MSIsImlhdCI6MTc5MDY4MzExNCwiZXhwIjoxNzkxMjg3OTE0fQ.wxuWWxmpvaJIh8lH-BHMqUKwud-xtoQMhb3R2KXsOIc
+Content-Type: application/json
+
+{ "title": "My own todo" }
+
+### My todos again → just this one ✅
+GET http://localhost:3000/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYmI5YjFjMjgyOTBhNjJjYTA1ZTk2MSIsImlhdCI6MTc5MDY4MzExNCwiZXhwIjoxNzkxMjg3OTE0fQ.wxuWWxmpvaJIh8lH-BHMqUKwud-xtoQMhb3R2KXsOIc
+
